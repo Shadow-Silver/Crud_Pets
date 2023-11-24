@@ -4,12 +4,16 @@ import jakarta.persistence.Column; // especifica el name de la columna en BD//im
 import jakarta.persistence.Entity; //marca una clase como entidad de BD
 import jakarta.persistence.Id; // entindad de llave primary
 import jakarta.persistence.Table; //especifica el nombre de la table en BD
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Entity //entidad referencia a BD y se puede hacer operaciones, inser, actuli, o elimi filas
 @Table (name = "usuarios") //relaciona a la tabla de users
+
+@ToString @EqualsAndHashCode
 public class Usuario {   //la clase + name, almacena info de cualquier user
 
     @Getter //obtiene valor, se obtiene de la dependencia lombok

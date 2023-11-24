@@ -1,13 +1,20 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.models.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 //sirve x se dividen las diferentes funciones, se van a colocar las diferentes acciones
 @RestController
 public class UsuarioControllers {
+
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     // METODOS X CADA UNA DE LAS FUNCIONES
     @RequestMapping(value = "usuario/{id}") //enruta lo que queremos ver en el nave  //SI QUEREMOS BUSCAR UN USUARIO EN ESPECIFICO ES USUARIO/#ID
@@ -20,6 +27,13 @@ public class UsuarioControllers {
         usuario.setTelefono("234234249");
         return usuario;
     }
+
+    @RequestMapping(value = "usuarios")
+    public List<Usuario> getUsuarios(){
+        return usuarioDao.getUsuarios();
+    }
+
+
     @RequestMapping(value = "usuario999")
     public Usuario editar(){
         Usuario usuario = new Usuario();
